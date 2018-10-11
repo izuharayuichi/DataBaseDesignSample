@@ -7,12 +7,23 @@
 |name|string|null: false, unique: true, index: true|
 |email|string|null: false, unique: true|
 
+### Association
+- has_many :groups
+- has_many :texts
+- has_many :images
+
+
 ## groupsテーブル
 
 |column|Type|Pptions|
 |------|----|-------|
 |name|string|null: false, index: true|
 |user_id|integer|null: false, foreign_key: true|
+
+### Association
+- has_many :users
+- has_many :texts
+- has_many :images
 
 
 ## textsテーブル
@@ -23,6 +34,10 @@
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
+### Association
+- belongs_to :user
+- belongs_to :group
+
 
 ## imagesテーブル
 
@@ -31,6 +46,10 @@
 |image|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
+- belongs_to :group
 
 
 This README would normally document whatever steps are necessary to get the
