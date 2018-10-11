@@ -8,10 +8,9 @@
 |email|string|null: false, unique: true|
 
 ### Association
-- has_many :groups
-- has_many :texts
-- has_many :images
-
+- has_many :groups, through: :group_users
+- has_many :messages
+- has_many :group_users
 
 ## groupsテーブル
 
@@ -21,16 +20,18 @@
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :users
-- has_many :texts
-- has_many :images
+- has_many :users, through: :group_users
+- has_many :messages
+- has_many :group_users
+- accepts_nested_attributes_for :group_users
 
 
-## textsテーブル
+## messagesテーブル
 
 |column|Type|Pptions|
 |------|----|-------|
-|text|text|null: false|
+|text|text||
+|image|text||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
@@ -39,13 +40,14 @@
 - belongs_to :group
 
 
-## imagesテーブル
+## group_userテーブル
 
 |column|Type|Pptions|
 |------|----|-------|
 |image|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, references: group, foreign_key: true|
+|user_id|integer|null: false, references: group, foreign_key: true|
+|
 
 ### Association
 - belongs_to :user
