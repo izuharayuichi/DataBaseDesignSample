@@ -5,7 +5,6 @@
 |column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true, index: true|
-|email|string|null: false, unique: true|
 
 ### Association
 - has_many :groups, through: :group_users
@@ -17,7 +16,6 @@
 |column|Type|Options|
 |------|----|-------|
 |name|string|null: false, index: true|
-|user_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :users, through: :group_users
